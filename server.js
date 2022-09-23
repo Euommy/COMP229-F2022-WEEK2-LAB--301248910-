@@ -4,21 +4,27 @@ const connect = require('connect');
 const app = connect();
 
 //custom middleware
-function helloWorld(req, res, next){
+function hello1(req, res, next){
       res.setHeader('Content-Type','text/plain' )
-      res.end('Hello World')
-}
+      res.end('Hello from NodeJS Application')
+};
 
 //custom middleware
-function byeWorld(req, res, next){
-      res.setHeader('Content-Type','text/plain');
-      res.end('Good bye World');
-}
+function hello2(req, res, next){
+      res.setHeader('Content-Type','text/html');
+      res.end('<h1> Hello from NodeJS Application as html</h1>');
+};
+
+//custom middleware
+function hello3(req, res, next){
+      res.setHeader('Content-Type','application/json');
+      res.end('message: Hello from NodeJS Application as json');
+};
 
 // add middleware to connect application
-app.use( '/', helloWorld);
-app.use( '/hello', helloWorld);
-app.use( '/bye', byeWorld);
+app.use( '/h1', hello1);
+app.use( '/h2', hello2);
+app.use( '/h3', hello3);
 // run app
 app.listen(3000);
 
